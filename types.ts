@@ -4,6 +4,7 @@ export interface DuaResponse {
   translation: string;
   source: string; // e.g., "Surah Al-Baqarah 2:286" or "Inspirational"
   guidance: string; // Comforting explanation
+  timestamp?: number;
 }
 
 export interface MoodPreset {
@@ -11,6 +12,8 @@ export interface MoodPreset {
   label: string;
   query: string;
 }
+
+export type ViewState = 'HOME' | 'PREMIUM' | 'DONATE' | 'DASHBOARD';
 
 export interface Verse {
   id: string;
@@ -20,20 +23,30 @@ export interface Verse {
 }
 
 export interface Surah {
-  number: number;
-  name: string;
+  id: string;
   englishName: string;
-  englishNameTranslation: string;
   verses: Verse[];
 }
 
 export interface UserProgress {
-  box: number;
-  nextReviewDate?: number;
+  verseId: string;
+  nextReview: number;
+  interval: number;
+  easeFactor: number;
 }
 
 export interface ChatMessage {
   role: 'user' | 'model';
   text: string;
   timestamp: number;
+}
+
+export interface AffiliateProduct {
+  id: string;
+  title: string;
+  description: string;
+  price: string;
+  category: string;
+  image: string;
+  link: string;
 }
